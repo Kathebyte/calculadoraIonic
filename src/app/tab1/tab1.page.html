@@ -1,20 +1,40 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Login
-    </ion-title>
+    <ion-title>Calculator</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <h1>HOME</h1>
-  <ion-item>
-    <ion-input label="User" labelPlacement="floating" placeholder="Insert your User" [(ngModel)]="user" ></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-input label="Password" labelPlacement="floating" placeholder="Insert your Password" [(ngModel)]="password" id="password"></ion-input>
-  </ion-item>
-
-  <ion-button fill="outline"(click)="start()">Login</ion-button>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="24" style="display: flex;">
+        <ion-input style="font-size: 48px;" [(ngModel)]="input" disabled></ion-input>
+      </ion-col >
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button expand="full" (click)="append('7')">7</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('8')">8</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('9')">9</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('/')">/</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button expand="full" (click)="append('4')">4</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('5')">5</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('6')">6</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('*')">*</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button expand="full" (click)="append('1')">1</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('2')">2</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('3')">3</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('-')">-</ion-button></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button expand="full" (click)="append('0')">0</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="clear()">C</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="calculate()">=</ion-button></ion-col>
+      <ion-col><ion-button expand="full" (click)="append('+')">+</ion-button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+

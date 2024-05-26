@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { evaluate } from 'mathjs';
 
 @Component({
   selector: 'app-tab1',
@@ -10,35 +10,23 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [IonicModule, FormsModule]
 })
-export class Tab1Page implements OnInit {
- 
-  user: String = "";
-  password: String = "";
+export class Tab1Page  {
   
+  input: string = ''
 
-  
-  obj = {
-   user : "kathe",
-   password : "kathe123",
-   
+  append(value: string) {
+    this.input += value;
   }
 
-  constructor(private router: Router) {}
+  clear() {
+    this.input = '';
+  }
 
-  ngOnInit(){}
-
-  start() {
-    
-    console.log("user " + this.user)
-    console.log("password " + this.password)
-    const {user,password} = this.obj;
-
-    if(this.user === user && this.password === password){
-      this.router.navigate(['/tab2']);
-    } else{
-      alert ("Error Login")
+  calculate() {
+    try {
+      this.input = evaluate(this.input).toString();
+    } catch (e) {
+      this.input = 'Error';
     }
-    console.log("obj user " + this.obj.user)
-    console.log("obj password " + this.obj.password)
   }
 }
